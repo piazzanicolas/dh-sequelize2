@@ -1,0 +1,13 @@
+<%- include('../partials/head') %> 
+    <h2>Listado de películas</h2>
+    <ul>
+		<% movies.forEach(movie => { %>
+		<li>
+			<b>Título: </b> <a href="/movies/detail/<%= movie.id %>"><%= movie.title %></a> 
+			<br>
+			<b>Genero: </b> <%= movie.genre_id ? movie.genre_id : 'Sin género' %> <br>
+			<hr>
+		</li>
+		<% }) %>
+	</ul>
+<%- include('../partials/footer')  %> 

@@ -1,0 +1,21 @@
+<%- include('../partials/head') %> 
+    <h2><%= movie.title %></h2>
+    <ul>
+		<li>
+            <b>Genero: </b> <%= movie.genre_id ? movie.genre_id : 'Sin género' %> 
+            <br>
+            <b>Premios: </b> <%= movie.awards ? movie.awards : 'Sin premios' %>
+			<br>
+            <b>Duración: </b> <%= movie.length ? movie.length : 'Sin duración' %> 
+            <br>
+            <b>Rating: </b> <%= movie.rating ? movie.rating : 'Sin rating' %>
+			<br>
+            <b>Estreno: </b> <%= movie.release_date.getFullYear() %> 
+            <br>
+		</li>
+    </ul>
+    <button>BORRAR</button>
+    <a href="/movies/edit/<%= movie.id %>">
+        <button>MODIFICAR</button>
+    </a>
+<%- include('../partials/footer')  %> 

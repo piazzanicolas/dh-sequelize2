@@ -1,0 +1,13 @@
+<%- include('../partials/head') %> 
+    <h2>Estrenos recientes</h2>
+    <ul>
+		<% movies.forEach(movie => { %>
+		<li>
+			<b>Título: </b> <a href="/movies/detail/<%= movie.id %>"><%= movie.title %></a> 
+			<br>
+			<b>Estreno: </b> <%= movie.release_date.getFullYear() %> <br>
+			<hr>
+		</li>
+		<% }) %>
+	</ul>
+<%- include('../partials/footer')  %> 

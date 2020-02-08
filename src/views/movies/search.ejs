@@ -1,0 +1,23 @@
+<%- include('../partials/head') %> 
+	<h2>Buscar una película</h2>
+	<form action="/movies/search" method="GET">
+		<div>
+			<label>Buscar por título:</label>
+			<input type="text" name="search">
+		</div>
+        <button type="submit">BUSCAR</button>
+        <br>
+        <label>
+            <input type="checkbox" name="order_rating">
+            Ordernar por rating
+        </label>
+        <hr>
+        <% if (results.length > 0) { %>
+            <% results.forEach(result => { %>
+            <p> <a href="/movies/detail/<%= result.id %>"><%= result.title %></a> (<%= result.rating %>)</p> 
+            <% }) %>
+        <% } else { %>
+            <p>No hay resultados para mostrar</p>
+        <% } %>
+	</form>
+<%- include('../partials/footer')  %> 
