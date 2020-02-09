@@ -5,7 +5,7 @@
 		<li>
 			<b>Título: </b> <a href="/movies/detail/<%= movie.id %>"><%= movie.title %></a> 
 			<br>
-			<b>Genero: </b> <%= movie.genre_id ? movie.genre_id : 'Sin género' %> <br>
+			<b>Genero: </b> <%= movie.genre ? movie.genre.name : 'Sin género' %> <br>
 			<hr>
 		</li>
 		<% }) %>

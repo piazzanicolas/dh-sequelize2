@@ -15,6 +15,20 @@ module.exports = (sequelize, DataTypes) => {
 		// tableName: 'peliculas',
 		timestamps: false
 	});
+	
+	movie.associate = (models) => {
+		movie.belongsTo(models.genres, {
+			as: 'genre',
+			foreignKey: 'genre_id'
+		});
 
+		movie.belongsToMany(models.actors, {
+			as: 'actors',
+			through: 'actor_movie',
+			foreignKey: 'movie_id',
+			otherKey: 'actor_id',
+			timestamps: false
+		});
+	}
 	return movie;
 }

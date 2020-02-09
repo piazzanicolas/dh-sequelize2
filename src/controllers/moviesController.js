@@ -14,7 +14,9 @@ function OrderbyRating(req) {
 module.exports = {
 	root: (req, res) => {
 		Movies
-			.findAll()
+			.findAll({
+				include: ['genre']
+			})
 			.then (movies => {
 				return res.render('movies/index', {movies});
 			})
@@ -22,7 +24,9 @@ module.exports = {
     },
     detail: (req, res) => {
 		Movies
-			.findByPk(req.params.id)
+			.findByPk(req.params.id,{
+				include: ['genre', 'actors']
+			})
 			.then (movie => {
 				return res.render('movies/detail', {movie});
 			})
@@ -70,5 +74,44 @@ module.exports = {
 			return res.render('movies/search');
 		})
 		.catch(error => res.send(error));
+	},
+	create: (req,res) => {
+		res.render('movies/create')
+	},
+	edit: (req,res) => {
+		Movies
+			.findByPk(req.params.id)
+			.then (movie => {
+				return res.render('movies/edit', {movie});
+			})
+			.catch(error => res.send(error));
+	},
+	save: (req,res)=>{
+		Movies
+			.create(req.body)
+			.then(movieSaved => {
+				res.redirect('/movies')
+			})
+			.catch(error => res.send(error));
+	},
+	destroy: (req, res) => {
+		Movies
+			.destroy({
+				where: {
+					id: req.params.id
+				}
+			})
+			.then(() => res.redirect('/movies'))
+			.catch(error => res.send(error));
+	},
+	update: (req, res) => {
+		Movies
+			.update(req.body, {
+				where: {
+					id: req.params.id
+				}
+			})
+			.then(() => res.redirect('/movies'))
+			.catch(error => res.send(error));
 	},
 };

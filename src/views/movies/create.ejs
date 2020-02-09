@@ -1,0 +1,26 @@
+<%- include('../partials/head') %> 
+    <h2>Crear película</h2>
+    <form action="/movies/create" method="POST">
+		<div>
+			<label>Title:</label>
+			<input type="text" name="title">
+		</div>
+		<div>
+			<label>Rating:</label>
+			<input type="text" name="rating">
+		</div>
+		<div>
+			<label>Awards:</label>
+			<input type="text" name="awards">
+		</div>
+		<div>
+			<label>Release Date:</label>
+			<input type="date" name="release_date">
+        </div>
+        <div>
+			<label>Genre:</label>
+			<input type="number" name="genre">
+        </div>
+        <button type="submit">GUARDAR</button>
+    </form>
+<%- include('../partials/footer')  %> 

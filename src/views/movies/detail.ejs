@@ -2,7 +2,7 @@
     <h2><%= movie.title %></h2>
     <ul>
 		<li>
-            <b>Genero: </b> <%= movie.genre_id ? movie.genre_id : 'Sin género' %> 
+            <b>Genero: </b> <%= movie.genre ? movie.genre.name : 'Sin género' %> 
             <br>
             <b>Premios: </b> <%= movie.awards ? movie.awards : 'Sin premios' %>
 			<br>
@@ -12,10 +12,16 @@
 			<br>
             <b>Estreno: </b> <%= movie.release_date.getFullYear() %> 
             <br>
+            <b>Actores: </b> <% movie.actors.forEach(actor => { %>
+				<%= actor.getFullName() %>
+				<% }) %>
+            <br>
 		</li>
     </ul>
-    <button>BORRAR</button>
     <a href="/movies/edit/<%= movie.id %>">
         <button>MODIFICAR</button>
     </a>
+    <form action="/movies/<%= movie.id %>?_method=DELETE" method="POST">
+        <button type='submit'>BORRAR</button>
+    </form>
 <%- include('../partials/footer')  %> 
