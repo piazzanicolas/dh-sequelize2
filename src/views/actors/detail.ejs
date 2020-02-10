@@ -4,7 +4,7 @@
     <ul>
         <% actor.movies.forEach (movie => { %>
         <li>
-            <a href="/movies/detail/<%= actor.movies[0].id %>"><%= actor.movies[0].title %></a> 
+            <a href="/movies/detail/<%= movie.id %>"><%= movie.title %></a> 
         </li>
         <% }) %>
 	</ul>
