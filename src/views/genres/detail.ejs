@@ -1,0 +1,11 @@
+<%- include('../partials/head') %> 
+    <h2>Género <%= movies[0].genre.name %></h2>
+    <h3>Listado de películas</h3>
+    <ul>
+		<% movies.forEach(movie => { %>
+		<li>
+			<a href="/movies/detail/<%= movie.id %>"><%= movie.title %></a> 
+		</li>
+		<% }) %>
+	</ul>
+<%- include('../partials/footer')  %> 

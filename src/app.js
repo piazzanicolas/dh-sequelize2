@@ -6,6 +6,8 @@ const logger = require('morgan');
 const path = require('path');
 const moviesRouter = require('./routes/moviesRouter')
 const methodOverride = require('method-override')
+const genresRouter = require('./routes/genresRouter')
+const actorsRouter = require('./routes/actorsRouter')
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -29,6 +31,8 @@ app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 const mainRouter = require('./routes/main');
 app.use('/', mainRouter);
 app.use('/movies', moviesRouter);
+app.use('/genres', genresRouter);
+app.use('/actors', actorsRouter);
 
 
 // ************ DON'T TOUCH FROM HERE ************

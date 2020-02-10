@@ -2,7 +2,12 @@
     <h2><%= movie.title %></h2>
     <ul>
 		<li>
-            <b>Genero: </b> <%= movie.genre ? movie.genre.name : 'Sin género' %> 
+            <b>Genero: </b>
+            <% if (movie.genre == null) { %>
+                Sin género
+            <% } else { %>
+                <a href="/genres/detail/<%= movie.genre.id %>"> <%= movie.genre ? movie.genre.name : 'Sin género' %> </a>
+            <% } %>
             <br>
             <b>Premios: </b> <%= movie.awards ? movie.awards : 'Sin premios' %>
 			<br>
@@ -12,9 +17,18 @@
 			<br>
             <b>Estreno: </b> <%= movie.release_date.getFullYear() %> 
             <br>
-            <b>Actores: </b> <% movie.actors.forEach(actor => { %>
-				<%= actor.getFullName() %>
+            <b>Actores: </b> 
+            <% if (movie.actors.length == 0) { %>
+                Sin Actores
+            <% } else { %>
+                <% movie.actors.forEach(actor => { %>
+                    <ul>
+                        <li>
+                            <a href="/actors/detail/<%= actor.id %>"> <%= actor.getFullName() %> </a>
+                        </li>
+                    </ul>
 				<% }) %>
+            <% } %>
             <br>
 		</li>
     </ul>
