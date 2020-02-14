@@ -19,8 +19,24 @@
         </div>
         <div>
 			<label>Genre:</label>
-			<input type="number" name="genre">
-        </div>
+			<select name="genre_id">
+				<option value="null">Elegí un género</option>
+				<% genres.forEach(genre => { %>
+				<option value="<%= genre.id %>"><%= genre.name %></option>
+				<% }) %>
+			</select>
+		</div>
+		<div>
+			<label>Actors:</label>
+			<i>Elegí uno o más actores</i>
+			<br>
+			<select name="actors" multiple>
+				<% actors.forEach(actor => { %>
+					<option value="<%= actor.id %>"> <%= actor.getFullName() %>  </option>
+				<% }) %>
+				<option value="null"></option>
+			</select>
+		</div>
         <button type="submit">GUARDAR</button>
     </form>
 <%- include('../partials/footer')  %> 
